@@ -54,7 +54,6 @@ img {
 
 .header .container {
   display: flex;
-  gap: 332px;
 }
 
 .header-soc {
@@ -99,7 +98,7 @@ img {
   letter-spacing: 0.02em;
   padding: 24px 0;
   transition-property: color;
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .line-link {
@@ -130,7 +129,7 @@ img {
   line-height: 1.5;
   letter-spacing: 0.02em;
   transition-property: color;
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .active:hover,
@@ -152,10 +151,11 @@ img {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .head-container {
-  max-width: 1440px;
 }
 
 .head-title {
@@ -503,11 +503,19 @@ img {
 .footer-soc-link {
   display: flex;
   gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-soc-icon-link {
+  width: 40px;
+  height: 40px;
 }
 
 .footer-soc-icon {
-  width: 40px;
-  height: 40px;
+  fill: #f4f4fd;
+  width: 100%;
+  height: 100%;
   border: none;
   border-radius: 50%;
   background-color: #4d5ae5;
@@ -517,7 +525,7 @@ img {
   transition-duration: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-soc-icon:hover,
-.footer-soc-icon:focus {
+.footer-soc-link:hover,
+.footer-soc-link:focus {
   background-color: #31d0aa;
 }
