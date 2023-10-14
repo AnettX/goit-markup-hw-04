@@ -83,9 +83,6 @@ img {
   gap: 40px;
 }
 
-.header-menu-item {
-}
-
 .header-logo-studio {
   color: #2e2f42;
 }
@@ -153,9 +150,6 @@ img {
   background-size: cover;
   max-width: 1440px;
   margin: 0 auto;
-}
-
-.head-container {
 }
 
 .head-title {
@@ -256,9 +250,6 @@ img {
   padding: 120px 0;
 }
 
-.team .container {
-}
-
 .team-title {
   text-align: center;
   font-size: 36px;
@@ -325,9 +316,6 @@ img {
   fill: #f4f4fd;
 }
 
-.container-item-text {
-}
-
 .team-subtitle {
   font-size: 20px;
   font-weight: 500;
@@ -349,9 +337,6 @@ img {
 
 .portfolio {
   padding: 120px 0;
-}
-
-.portfolio .container {
 }
 
 .portfolio-title {
@@ -449,11 +434,11 @@ img {
 .footer-container {
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
 }
 
 .footer-logo-container {
   padding: 0;
-  margin-right: 120px;
 }
 
 .footer-link-logo {
@@ -520,12 +505,90 @@ img {
   background-color: #31d0aa;
 }
 
+.footer-subscribe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-label {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.footer-input-wrap {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-form-input {
+  width: 264px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  background-color: transparent;
+  outline: transparent;
+  padding: 16px 8px;
+  color: #fff;
+}
+
+.footer-form-input::placeholder {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+.footer-form-btn {
+  width: 165px;
+  height: 40px;
+  padding: 8px 24px;
+  color: #fff;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  background-color: #4d5ae5;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.footer-sb-icon {
+  fill: #ffffff;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Modal view */
+
 .backdrop {
   position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
   background: var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.4));
+  /* Modal hidden */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .modal {
@@ -542,15 +605,34 @@ img {
 
 .modal-btn {
   background-color: transparent;
-  border: none;
   position: absolute;
   top: 24px;
   right: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #e7e9fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-btn-icon {
-  fill: transparent;
-  /* stroke: #111111; перевірити чи потрібно це тут взагалі */
+.modal-btn:hover,
+.modal-btn:focus {
+  background-color: #404bbf;
+  border: none;
+}
+
+.modal-icon-close {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-btn:hover .modal-icon-close,
+.modal-btn:focus .modal-icon-close {
+  fill: #ffffff;
 }
 
 .modal-title {
@@ -564,27 +646,42 @@ img {
   margin-bottom: 16px;
 }
 
-.modal-form {
-}
-
 .modal-field {
-  margin-bottom: 18px;
+  margin-bottom: 8px;
 }
 
 .modal-input {
   width: 100%;
   height: 58px;
   border-radius: 4px;
-  border: 1px solid var(--IRIS, #4d5ae5);
+  border: 1px solid var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.4));
   background-color: transparent;
-
-  padding-left: 16px;
-  padding-right: 8px;
-  color: #4d5ae5;
+  padding-left: 38px;
+  padding-right: 16px;
+  color: #2e2f42;
+  font-size: 10px;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-input::placeholder {
-  color: red;
+.modal-input:focus {
+  border-color: #4d5ae5;
+}
+
+.modal-input:focus + .modal-icon {
+  fill: #4d5ae5;
+}
+
+.modal-field + .texarea {
+  margin-bottom: 16px;
+}
+
+.modal-field + .check {
+  margin-bottom: 24px;
+}
+
+.modal-button-wrap {
+  text-align: center;
 }
 
 .modal-form-btn {
@@ -594,8 +691,8 @@ img {
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
-  line-height: 24px; /* 150% */
-  letter-spacing: 0.64px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
   border-radius: 4px;
   background-color: #4d5ae5;
   border: none;
@@ -603,11 +700,83 @@ img {
 
 .modal-label {
   display: block;
-  color: var(--LIGHT-SLATE, #8e8f99);
+  color: #8e8f99;
   font-family: Roboto;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.17;
-  letter-spacing: 0.48px;
+  letter-spacing: 0.04em;
   margin-bottom: 4px;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.modal-icon {
+  position: absolute;
+  fill: #2e2f42;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-textarea {
+  width: 100%;
+  height: 120px;
+  border-radius: 4px;
+  border: 1px solid var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.4));
+  background-color: transparent;
+  padding: 8px 16px;
+  color: #2e2f42;
+  font-size: 10px;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  resize: none;
+}
+
+.modal-textarea::placeholder {
+  color: rgba(46, 47, 66, 0.4);
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+}
+
+.check-text {
+  color: #8e8f99;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+}
+
+.check-text a {
+  color: #4d5ae5;
+  line-height: 1.33;
+  text-decoration-line: underline;
+}
+
+.check-text-box {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: transparent;
+}
+
+.modal-check:checked + .check-text > .check-text-box {
+  background-color: #4d5ae5;
+  border: none;
+  fill: #fff;
 }
